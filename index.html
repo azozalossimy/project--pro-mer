@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مدينة الذكريات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--background:#050816;--background-secondary:#0a1030;--surface:#0d1638;--surface-glass:rgba(12,22,52,.62);--primary:#5eead4;--primary-glow:rgba(94,234,212,.45);--secondary:#8b5cf6;--accent:#e6c27a;--text-primary:#eef3ff;--text-secondary:#9fb0d6;--border:rgba(140,170,230,.18);--border-glow:rgba(94,234,212,.4);--success:#4ade80;--warning:#fbbf24;--danger:#f87171;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+body{font-family:Tajawal,system-ui,sans-serif;background:var(--background);color:var(--text-primary);min-height:100vh;line-height:1.6}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(60% 40% at 88% 18%,rgba(139,92,246,.24),transparent),radial-gradient(50% 40% at 8% 58%,rgba(94,234,212,.09),transparent),linear-gradient(#050816,#0a1030 70%,#0b0f2a)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.55;pointer-events:none;background-image:radial-gradient(1px 1px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 120px 80px,#bff,transparent),radial-gradient(1.5px 1.5px at 200px 150px,#fff,transparent),radial-gradient(1px 1px at 60px 170px,#fff,transparent);background-size:240px 200px}
+#mt{position:fixed;bottom:0;left:0;width:100%;height:130px;z-index:-1;pointer-events:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;box-shadow:0 0 14px var(--primary-glow)}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.card{background:var(--surface-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+nav{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(940px,94vw);z-index:20;display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:22px;background:var(--surface-glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border-glow);box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 26px rgba(94,234,212,.1)}
+.logo{flex:1;display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem}
+.logo svg{width:30px;height:30px;filter:drop-shadow(0 0 7px var(--primary-glow))}
+.pf{flex:1;display:flex;justify-content:flex-end}
+.pf a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--border);color:var(--text-secondary);transition:.25s}
+.pf a:hover{color:var(--primary);border-color:var(--border-glow)}
+.nl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 14px;color:var(--text-secondary);font-size:.78rem;position:relative;border-radius:12px;text-decoration:none;transition:.25s}
+.nl:hover{color:var(--text-primary);text-shadow:0 0 10px var(--primary-glow)}
+.nl.on{color:var(--primary);background:rgba(94,234,212,.08)}
+.nl.on::after{content:"";position:absolute;bottom:0;inset-inline:18%;height:2px;border-radius:2px;background:var(--primary);box-shadow:0 0 8px var(--primary-glow)}
+.bn{display:none}
+main{max-width:940px;margin:0 auto;padding:96px 16px 60px}
+main>*{animation:in .45s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.ph{margin:8px 0 20px}.ph h1{font-size:1.9rem;font-weight:800}.ph p{color:var(--text-secondary)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:14px;border:1px solid var(--border-glow);background:rgba(94,234,212,.1);color:var(--primary);font-weight:700;transition:.25s}
+.btn:hover{background:rgba(94,234,212,.2);box-shadow:0 0 18px var(--primary-glow)}
+.btn:active{transform:scale(.97)}
+.btn.go{background:linear-gradient(135deg,#2dd4bf,#8b5cf6);color:#04101f;border:0}
+.btn.ghost{color:var(--text-secondary);border-color:var(--border);background:none}
+.top{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.act{display:flex;align-items:center;gap:14px;padding:14px 18px;text-align:start;border-color:rgba(230,194,122,.4);transition:.25s}
+.act:hover{box-shadow:0 0 24px rgba(230,194,122,.18);transform:translateY(-2px)}
+.act .b{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--primary);color:#04101f;flex:none;box-shadow:0 0 16px var(--primary-glow)}
+.act .b.o{background:none;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
+.act b{display:block;font-size:1.05rem}.act small{color:var(--text-secondary)}
+.lvl{display:flex;justify-content:center;margin:16px 0 0}
+.lvl span{padding:5px 16px;border-radius:99px;border:1px solid var(--border-glow);background:var(--surface-glass);font-weight:700;color:var(--primary)}
+.wrap{max-width:660px;margin:0 auto;overflow:auto}
+.wrap svg{display:block;margin:0 auto;width:100%;transition:width .3s}
+.zm{display:flex;justify-content:center;gap:8px}
+.zm button{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);color:var(--text-secondary);font-size:1.2rem}
+.node{cursor:pointer;outline:none}
+.nc{fill:rgba(94,234,212,.14);stroke:#5eead4;stroke-width:1.5;filter:drop-shadow(0 0 7px rgba(94,234,212,.6));transition:.3s}
+.node{transition:opacity .4s}.node:hover .nc,.node:focus-visible .nc{fill:rgba(94,234,212,.38)}
+.node.off{opacity:.3}.ni{font-size:19px}.nb{fill:#0d1638;stroke:rgba(255,255,255,.25)}.nn{fill:#fff;font-size:11px;font-weight:700}
+.orbit{fill:none;stroke:rgba(140,170,230,.25);stroke-dasharray:2 7;transform-origin:300px 300px;animation:sp 160s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.road{stroke:rgba(94,234,212,.35);stroke-width:2;fill:none}
+.bld{transition:opacity .5s}.bld path{transition:fill .4s}
+.bld .l{fill:#2b2680}.bld .r{fill:#1c1858}.bld .t{fill:#4a47b5}
+.bld.m{cursor:pointer;filter:drop-shadow(0 0 4px rgba(94,234,212,.5));outline:none}
+.bld.m .t{fill:#5eead4}.bld.m .l{fill:#17858f}.bld.m .r{fill:#0e5a69}
+.bld.m.f .t{fill:var(--accent)}.bld.m:hover,.bld.m:focus-visible{filter:drop-shadow(0 0 9px #5eead4)}
+.bld.off{opacity:.14}
+.strip{display:none;gap:8px;overflow-x:auto;padding:6px 2px;margin-top:6px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text-secondary);font-size:.82rem;white-space:nowrap;transition:.25s}
+button.chip:hover,.chip.on{color:var(--primary);border-color:var(--border-glow);background:rgba(94,234,212,.1)}
+.tt{padding:16px 18px;margin-top:14px}.tt h3{display:flex;gap:8px;align-items:center;font-size:1rem;margin-bottom:10px}
+.yrs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.yc{padding:6px 16px;border-radius:99px;border:1px solid var(--border);color:var(--text-secondary);white-space:nowrap;transition:.25s}
+.yc.on{color:#04101f;background:var(--primary);box-shadow:0 0 14px var(--primary-glow);font-weight:700}
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.sc{padding:16px;text-align:center}.sc b{display:block;font-size:1.7rem;color:var(--primary);line-height:1.2}.sc small{color:var(--text-secondary)}
+.cta{text-align:center;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mc,.dc{display:block;text-align:start;width:100%;background:rgba(13,22,56,.85);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.25s}
+.mc:hover,.dc:hover{border-color:var(--border-glow);transform:translateY(-2px);box-shadow:0 0 20px rgba(94,234,212,.12)}
+.art{height:96px;display:grid;place-items:center;font-size:2.4rem;background:linear-gradient(135deg,hsl(var(--h) 60% 30%),hsl(calc(var(--h) + 60) 55% 12%));position:relative;overflow:hidden}
+.art.big{height:150px;border-radius:14px;font-size:3.4rem}
+.art img{width:100%;height:100%;object-fit:cover}
+.mb{padding:12px 14px}.mb h3{font-size:1rem}.mb p{color:var(--text-secondary);font-size:.85rem;margin-bottom:6px}
+.dc{padding:16px}.dc .e{font-size:1.8rem}.dc h3{margin:4px 0}.dc p{color:var(--text-secondary);font-size:.85rem}
+.bar{height:5px;border-radius:5px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--secondary))}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.tier{padding:12px;border-radius:14px;border:1px solid var(--border);text-align:center;color:var(--text-secondary)}.tier b{display:block;font-size:.9rem}.tier small{font-size:.75rem}
+.tier.on{border-color:var(--border-glow);color:var(--primary);box-shadow:0 0 18px rgba(94,234,212,.15);background:rgba(94,234,212,.06)}
+.sb{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:16px;border:1px solid var(--border);background:rgba(13,22,56,.85);color:var(--text-secondary);margin-bottom:12px}
+.sb input{flex:1;background:none;border:0;outline:0;color:var(--text-primary)}.sb:focus-within{border-color:var(--border-glow)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.empty{padding:36px 20px;text-align:center;border:1px dashed var(--border-glow);border-radius:20px;margin:14px 0}.empty h3{font-size:1.3rem;margin-bottom:12px}
+.ys{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:10px}.ys div{flex:1;text-align:center;font-size:.75rem;color:var(--text-secondary);display:flex;flex-direction:column;justify-content:flex-end;height:100%}.ys i{display:block;background:linear-gradient(var(--primary),var(--secondary));border-radius:6px 6px 0 0;min-height:4px}
+.jl{display:grid;gap:10px}
+.back{position:fixed;inset:0;z-index:50;background:rgba(3,6,20,.7);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:in .25s}
+.modal{width:min(560px,100%);max-height:88vh;overflow:auto;padding:22px;position:relative}
+.modal h2{margin:12px 0 4px}.meta{color:var(--text-secondary);font-size:.9rem;margin-bottom:10px}
+.modal h4{margin:14px 0 6px}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.x{position:absolute;top:12px;inset-inline-end:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--text-secondary);z-index:2;background:rgba(0,0,0,.35)}
+.x:hover{color:var(--danger)}
+form label{display:block;font-size:.85rem;color:var(--text-secondary);margin-top:10px}
+form input:not([type=checkbox]),form select,form textarea{display:block;width:100%;margin-top:4px;padding:9px 12px;border-radius:12px;border:1px solid var(--border);background:rgba(5,8,22,.6);color:var(--text-primary)}
+form select option{background:#0d1638}.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ck{display:flex!important;align-items:center;gap:8px}.ck input{width:auto}
+form .btn{width:100%;justify-content:center;margin-top:16px}
+.jv{position:fixed;inset:0;z-index:60;background:radial-gradient(70% 50% at 50% 30%,#1a1660,#050816);overflow:auto;padding:70px 18px 30px;text-align:center}
+.jv .big{font-size:4.5rem;filter:drop-shadow(0 0 20px var(--primary-glow))}
+.jp{position:absolute;top:calc(24px + env(safe-area-inset-top,0px));inset-inline:60px;display:flex;gap:6px}.jp i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.15)}.jp i.on{background:var(--primary);box-shadow:0 0 8px var(--primary-glow)}
+.js{max-width:720px;margin:0 auto;animation:in .7s}.js h2{font-size:2rem}.js p{color:var(--text-secondary);margin-bottom:16px}
+.jv .row{justify-content:center}
+#tip{position:fixed;z-index:70;pointer-events:none;padding:8px 12px;border-radius:12px;background:rgba(8,12,36,.92);border:1px solid var(--border-glow);box-shadow:0 0 18px rgba(94,234,212,.2);font-size:.85rem;max-width:230px}
+#toast{position:fixed;bottom:calc(80px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;padding:10px 20px;border-radius:99px;background:var(--surface);border:1px solid var(--border-glow);box-shadow:0 0 20px var(--primary-glow);animation:in .3s}
+#load{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;background:radial-gradient(60% 50% at 50% 40%,#1a1660,#050816);transition:opacity .6s;font-weight:700}
+#load svg{width:72px;height:72px;filter:drop-shadow(0 0 14px var(--primary-glow));animation:pl 1.6s ease-in-out infinite}
+@keyframes pl{50%{transform:scale(1.08);opacity:.8}}
+.hero{text-align:center;padding:10px 0}.hero h1{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:800;line-height:1.2}.hero p{color:var(--text-secondary);max-width:460px;margin:10px auto 18px}
+.land{pointer-events:none}
+
+/* Upload Area & Thumbnails */
+.upload-area{border:2px dashed var(--border-glow);border-radius:14px;padding:30px;text-align:center;cursor:pointer;transition:.3s;background:rgba(94,234,212,.02);margin-top:8px}
+.upload-area:hover,.upload-area.dragover{background:rgba(94,234,212,.08);border-color:var(--primary);box-shadow:0 0 20px var(--primary-glow)}
+.upload-area p{margin:0;color:var(--text-secondary);font-size:.9rem}
+.upload-area b{color:var(--primary)}
+.thumbs{display:flex;gap:10px;overflow-x:auto;padding:10px 0;scrollbar-width:thin}
+.thumb{width:80px;height:80px;border-radius:10px;object-fit:cover;border:2px solid transparent;position:relative;flex:none;animation:in .3s;background:#0a1030}
+.thumb.cover{border-color:var(--primary)}
+.thumb-wrap{position:relative;flex:none;cursor:pointer}
+.thumb-wrap .del{position:absolute;top:-6px;right:-6px;background:var(--danger);color:#fff;border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:12px;z-index:2;border:none}
+.thumb-wrap .cover-badge{position:absolute;bottom:2px;left:2px;background:var(--primary);color:#000;font-size:10px;padding:1px 4px;border-radius:4px;font-weight:bold}
+.spinner{width:24px;height:24px;border:3px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-box{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);border-radius:12px;padding:12px;margin-top:10px;animation:in .3s}
+.ai-suggestion{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.85rem;color:var(--text-secondary)}
+.ai-suggestion b{color:var(--text-primary)}
+
+@media(max-width:720px){nav .nl{display:none}.bn{display:flex;position:fixed;bottom:0;inset-inline:0;z-index:20;justify-content:space-around;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(8,12,36,.92);backdrop-filter:blur(14px);border-top:1px solid var(--border)}.bn .nl{padding:6px 8px}main{padding-bottom:110px}.top{grid-template-columns:1fr}.strip{display:flex}.tiers{grid-template-columns:1fr 1fr}.qs{gap:8px}.sc b{font-size:1.4rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg id="mt" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200V120l120-40 100 50 140-70 120 60 160-30 150 70 140-60 130 40 150-50 130 60V200z" fill="#070b24" opacity=".92"/></svg>
+<div id="load"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 4a12 12 0 1 0 8 20 10 10 0 0 1-8-20z" fill="#5eead4"/><path d="M11 25v-6h4v6M15 25v-9h4v9" stroke="#fff" fill="none"/></svg><span>نبني مدينة ذكرياتك...</span></div>
+<nav id="nav" aria-label="التنقل الرئيسي" hidden></nav>
+<main id="app"></main>
+<div class="bn" id="bn" hidden></div>
+<div id="ov"></div><div id="tip" hidden></div><div id="toast" hidden role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const P={home:'<path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/>',city:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/>',mem:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 9"/>',stats:'<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',journey:'<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h8"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',plus:'<path d="M12 5v14M5 12h14"/>',spark:'<path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',x:'<path d="M6 6l12 12M18 6 6 18"/>',img:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>'};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const C=[['childhood','الطفولة','🧸','البدايات والبيت الأول'],['school','المدرسة','🎒','أيام الدراسة الأولى'],['uni','الجامعة','🎓','التعلّم والمشاريع'],['friends','الأصدقاء','🤝','الصحبة والليالي الجميلة'],['travel','السفر','✈️','رحلات واكتشافات'],['wins','الإنجازات','🏆','محطات الفخر'],['family','العائلة','🏡','اللمّة والأحبّة'],['special','لحظات خاصة','✨','لحظات لا تتكرر'],['dreams','الأحلام','🌠','ما نطمح إليه'],['key','ذكريات مهمة','⭐','معالم حياتك الكبرى']];
+const MOODS=['سعادة','حماس','فخر','حنين','هدوء'];
+const cat=k=>C.find(c=>c[0]==k);
+const hu=k=>C.findIndex(c=>c[0]==k)*36+180;
+const yr=m=>m.date.slice(0,4);
+const mk=(id,title,date,loc,c,mood,people,tags,fav,desc,images=[],coverImage=null,district='',createdAt=Date.now(),updatedAt=Date.now())=>({id,title,date,loc,cat:c,mood,people,tags,fav,desc,images,coverImage,district:district||c,createdAt,updatedAt});
+
+/* ---------- IndexedDB Image Storage ---------- */
+const DB_NAME = 'MemoryCityDB'; const DB_VERSION = 1; const STORE_IMAGES = 'images';
+const dbPromise = new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => { const db = e.target.result; if (!db.objectStoreNames.contains(STORE_IMAGES)) db.createObjectStore(STORE_IMAGES, { keyPath: 'id' }); };
+    req.onsuccess = e => resolve(e.target.result); req.onerror = e => reject(e.target.error);
+});
+const imgStore = {
+    save: async (img) => { const db = await dbPromise; return new Promise((res, rej) => { const tx = db.transaction(STORE_IMAGES, 'readwrite'); tx.objectStore(STORE_IMAGES).put(img); tx.oncomplete = res; tx.onerror = rej; }); },
+    get: async (id) => { const db = await dbPromise; return new Promise((res, rej) => { const tx = db.transaction(STORE_IMAGES, 'readonly'); const req = tx.objectStore(STORE_IMAGES).get(id); req.onsuccess = () => res(req.result); req.onerror = rej; }); },
+    delete: async (id) => { const db = await dbPromise; return new Promise((res, rej) => { const tx = db.transaction(STORE_IMAGES, 'readwrite'); tx.objectStore(STORE_IMAGES).delete(id); tx.oncomplete = res; tx.onerror = rej; }); },
+    clear: async () => { const db = await dbPromise; return new Promise((res, rej) => { const tx = db.transaction(STORE_IMAGES, 'readwrite'); tx.objectStore(STORE_IMAGES).clear(); tx.oncomplete = res; tx.onerror = rej; }); }
+};
+
+/* ---------- Demo Seed (Separated) ---------- */
+const seed=()=>[
+mk('m1','بيت الجد في الصيف','2011-07-14','بيت الجد','childhood','حنين',['جدي','إخوتي'],['عائلة','صيف'],true,'قضينا الصيف كله نلعب في الحوش ونسهر على أحاديث جدي.'),
+mk('m2','تعلّمت ركوب الدراجة','2012-04-09','حي الطفولة','childhood','فخر',['أبي'],['طفولة'],false,'تركني أبي أول مرة بلا مساعدة، وقطعت الشارع كاملاً دون أن أقع.'),
+mk('m3','أول يوم في المتوسطة','2016-09-04','مدرستي','school','حماس',['أحمد','خالد'],['مدرسة','بداية'],false,'فصل جديد ووجوه جديدة، وتعرّفت فيه على أقرب أصدقائي.'),
+mk('m4','مسابقة العلوم المدرسية','2018-03-21','قاعة المدرسة','school','فخر',['أ. سارة'],['علوم','فوز'],true,'عرضنا مشروعاً صغيراً عن الطاقة وحصلنا على المركز الأول.'),
+mk('m5','أول يوم في الجامعة','2022-09-11','الحرم الجامعي','uni','حماس',['لينا'],['جامعة','بداية'],false,'ضعت بين القاعات، ثم وجدت لينا وبدأت أولى صداقاتي الجامعية.'),
+mk('m6','مشروع التخرج الأول','2024-05-02','معمل الحاسب','uni','فخر',['فريق العمل','د. ماجد'],['برمجة','مشروع'],true,'ليالٍ طويلة من العمل انتهت بعرض ناجح أمام اللجنة.'),
+mk('m7','ليلة الشواء','2023-11-05','الحديقة','friends','سعادة',['أحمد','خالد','ريم'],['أصدقاء','طعام'],false,'ضحكنا حتى انتهى الفحم، وكانت ليلة لا تُنسى.'),
+mk('m8','رحلة تخييم','2024-12-20','البر','friends','سعادة',['خالد','فهد'],['أصدقاء','تخييم'],false,'نار ومعجنات وسماء مليئة بالنجوم.'),
+mk('m9','أول رحلة خارج البلد','2023-08-10','إسطنبول','travel','حماس',['أخي','ريم'],['سفر','مدن'],true,'مشينا على الجسر عند الغروب وشربنا الشاي على الشاطئ.'),
+mk('m10','غروب على الشاطئ','2025-07-18','جدة','travel','هدوء',['أمي'],['سفر','بحر'],false,'جلسنا نراقب الموج حتى اختفت الشمس.'),
+mk('m11','شهادة المطوّر الأولى','2025-02-14','عن بُعد','wins','فخر',[],['إنجاز','تقنية'],true,'بعد أشهر من التعلم، حصلت على أول شهادة احترافية.'),
+mk('m12','المركز الثاني في الهاكاثون','2025-10-03','الرياض','wins','فخر',['فريق العمل'],['هاكاثون','تقنية'],false,'ثمانٍ وأربعون ساعة من العمل المتواصل وفريق رائع.'),
+mk('m13','العيد مع العائلة','2025-03-31','بيت العائلة','family','سعادة',['أمي','أبي','جدي'],['عائلة','عيد'],false,'اجتمعنا كلنا على مائدة واحدة بعد غياب طويل.'),
+mk('m14','مفاجأة عيد الميلاد','2026-01-09','المنزل','special','سعادة',['ريم','أحمد'],['مفاجأة','صحبة'],false,'دخلت البيت فوجدت الجميع ينتظرني بالشموع.'),
+mk('m15','خطة مشروعي الأول','2026-03-15','مكتبي','dreams','حماس',['لينا'],['حلم','مشروع'],false,'رسمت على الورق فكرة أريد أن أحوّلها إلى منتج حقيقي.')];
+
+/* ---------- State ---------- */
+const K='mc_v3'; let S={mem:[],year:null,q:'',cat:'',fav:false,zoom:1};
+try{const d=JSON.parse(localStorage.getItem(K)); if(Array.isArray(d)) S.mem=d;}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S.mem))}catch(e){}};
+const list=k=>S.mem.filter(m=>m.cat==k&&(!S.year||yr(m)==S.year));
+const years=()=>[...new Set(S.mem.map(yr))].sort();
+const lvl=n=>{const i=n<=5?0:n<=15?1:n<=30?2:3;return{i,name:['عالم صغير','مدينة نامية','مدينة كبيرة','مدينة الذكريات الكبرى'][i],next:[6,16,31,0][i]}};
+const byDate=(a,b)=>b.date>a.date?1:-1;
+const mode=a=>{const o={};a.forEach(x=>o[x]=(o[x]||0)+1);return Object.entries(o).sort((a,b)=>b[1]-a[1])};
+
+/* ---------- Memory World (SVG) ---------- */
+function world(){
+ const n=S.mem.length;
+ if(n === 0) return '<div style="text-align:center;padding:80px 20px;color:var(--text-secondary)"><div style="font-size:4rem;margin-bottom:20px;filter:grayscale(1) opacity(.5)">🌑</div><h2>المدينة فارغة</h2><p>أضف ذكرى لتظهر أول معالمك هنا.</p></div>';
+ 
+ const ex=[3,8,16,28][lvl(n).i];
+ let cells=[];for(let x=-4;x<=4;x++)for(let y=-4;y<=4;y++)if(x&&y)cells.push([x,y]);
+ cells.sort((a,b)=>a[0]*a[0]+a[1]*a[1]-b[0]*b[0]-b[1]*b[1]||a[0]-b[0]);
+ cells=cells.slice(0,Math.min(64,n+ex)).map((c,i)=>({x:c[0],y:c[1],m:S.mem[i]}));
+ cells.sort((a,b)=>a.x+a.y-b.x-b.y);
+ const cube=c=>{const m=c.m,h=m?16+(m.fav?18:0)+(m.title.length%3)*7:8+((c.x*7+c.y*3+20)%4)*6,sx=300+(c.x-c.y)*16,sy=290+(c.x+c.y)*8,u=sy-h;
+  return `<g class="bld ${m?'m':'d'}${m&&m.fav?' f':''}" ${m?`data-id="${m.id}" data-y="${yr(m)}" data-tip="b" tabindex="0" role="button" aria-label="${esc(m.title)}"`:''}><path class="l" d="M${sx-13} ${u+6.5}L${sx} ${u+13}V${sy+13}L${sx-13} ${sy+6.5}z"/><path class="r" d="M${sx+13} ${u+6.5}L${sx} ${u+13}V${sy+13}L${sx+13} ${sy+6.5}z"/><path class="t" d="M${sx} ${u}L${sx+13} ${u+6.5}L${sx} ${u+13}L${sx-13} ${u+6.5}z"/></g>`};
+ const nodes=C.map((c,i)=>{const a=-Math.PI/2+i*Math.PI/5,x=(300+238*Math.cos(a)).toFixed(1),y=(300+238*Math.sin(a)).toFixed(1);
+  return `<g class="node" data-k="${c[0]}" data-tip="n" tabindex="0" role="link" aria-label="حي ${c[1]}" transform="translate(${x} ${y})"><circle r="34" fill="transparent"/><circle class="nc" r="24"/><text class="ni" y="7" text-anchor="middle">${c[2]}</text><g transform="translate(18 -19)"><circle class="nb" r="10"/><text class="nn" y="4" text-anchor="middle">${i+1}</text></g></g>`}).join('');
+ return `<svg viewBox="0 0 600 600" role="img" aria-label="عالم الذكريات" style="width:${S.zoom*100}%"><defs><radialGradient id="pg" cx=".4" cy=".35"><stop offset="0" stop-color="#2a2f8f"/><stop offset="1" stop-color="#070a2a"/></radialGradient><filter id="gl"><feGaussianBlur stdDeviation="7"/></filter><clipPath id="cp"><circle cx="300" cy="300" r="148"/></clipPath></defs><circle class="orbit" cx="300" cy="300" r="238"/><circle cx="300" cy="300" r="158" fill="none" stroke="#8b5cf6" stroke-width="10" opacity=".6" filter="url(#gl)"/><circle cx="300" cy="300" r="150" fill="url(#pg)" stroke="#8b5cf6" stroke-opacity=".6"/><g clip-path="url(#cp)"><path class="road" d="M228 254L372 326M372 254L228 326"/>${cells.map(cube).join('')}</g>${nodes}</svg>`;
+}
+
+function sync(){
+ document.querySelectorAll('.bld.m').forEach(e=>e.classList.toggle('off',!!S.year&&e.dataset.y!=S.year));
+ document.querySelectorAll('.node').forEach(e=>e.classList.toggle('off',!list(e.dataset.k).length));
+ document.querySelectorAll('.yc').forEach(e=>{const on=(e.dataset.y||null)==S.year;e.classList.toggle('on',on);e.setAttribute('aria-pressed',on)});
+ const s=$('ys');if(s){const n=S.year?S.mem.filter(m=>yr(m)==S.year).length:S.mem.length;s.textContent=S.year?`ذكريات ${S.year}: ${n}`:`${n} ذكرى عبر ${years().length} سنة`}
+}
+
+/* ---------- Pieces ---------- */
+const hd=(t,s)=>`<header class="ph"><h1>${t}</h1><p>${s}</p></header>`;
+
+const mcard = m => {
+    let artHtml = `<div class="art" style="--h:${hu(m.cat)}">${cat(m.cat)[2]}</div>`;
+    if(m.coverImage) {
+        artHtml = `<div class="art" style="background:none;overflow:hidden;position:relative">
+            <img src="" style="width:100%;height:100%;object-fit:cover;" id="card-img-${m.id}">
+            <div style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);border-radius:50%;padding:4px;color:#fff">${ic('img')}</div>
+        </div>`;
+        setTimeout(async () => {
+            const rec = await imgStore.get(m.coverImage);
+            if(rec) {
+                const el = document.getElementById(`card-img-${m.id}`);
+                if(el) el.src = URL.createObjectURL(rec.blob);
+            }
+        }, 10);
+    }
+    return `<article class="mc" data-a="open" data-id="${m.id}" tabindex="0" role="button">${artHtml}<div class="mb"><h3>${m.fav?'★ ':''}${esc(m.title)}</h3><p>📅 ${m.date} · 📍 ${esc(m.loc)}</p><span class="chip">${esc(m.mood)}</span> <span class="chip">${cat(m.cat)[1]}</span></div></article>`;
+};
+
+const emptyBox=k=>`<div class="empty"><h3>${k?'هذا الحي ينتظر أول ذكرى.':'مدينتك تنتظر أول ذكرى.'}</h3><button class="btn go" data-a="add" data-k="${k||''}">${ic('plus')} أضف أول ذكرى</button></div>`;
+const dcard=c=>{const l=S.mem.filter(m=>m.cat==c[0]).sort(byDate),mx=Math.max(1,...C.map(d=>S.mem.filter(m=>m.cat==d[0]).length));
+ return `<button class="dc" data-a="d" data-k="${c[0]}"><div class="e">${c[2]}</div><h3>حي ${c[1]}</h3><p>${l.length} ذكرى</p><p>${l[0]?'آخر ذكرى: '+esc(l[0].title):c[3]}</p><div class="bar"><i style="width:${l.length/mx*100}%"></i></div></button>`};
+const conns=()=>{let n=0;for(let i=0;i<S.mem.length;i++)for(let j=i+1;j<S.mem.length;j++){const a=S.mem[i],b=S.mem[j];if(a.people.some(p=>b.people.includes(p))||a.tags.some(t=>b.tags.includes(t)))n++}return n};
+
+/* ---------- Views ---------- */
+const V={
+landing(){return `<section class="hero"><h1>ذكرياتك تبني مدينتك</h1><p>كل ذكرى مكان، وكل مجموعة حي، وكل لحظة مهمة معلم. ادخل عالمك المبني من حياتك.</p><a class="btn go" href="#home">${ic('city')} ادخل مدينتك</a></section><div class="wrap land">${world()}</div>`},
+home(){
+ const n=S.mem.length,L=lvl(n);if(S.year&&!years().includes(S.year))S.year=null;
+ if(n===0) {
+    return `<section class="empty" style="margin-top:60px; border:1px dashed var(--primary); padding:50px 20px; border-radius:20px; text-align:center; background:rgba(94,234,212,.02)">
+        <div style="font-size:4rem;margin-bottom:15px;filter:drop-shadow(0 0 20px var(--primary-glow))">🌌</div>
+        <h2 style="font-size:2rem;margin-bottom:10px;color:var(--text-primary)">مدينتك لا تزال تنتظر</h2>
+        <p style="color:var(--text-secondary);margin-bottom:25px;max-width:400px;margin-inline:auto">لا توجد مبانٍ هنا بعد. المدينة تُبنى بالذكريات التي تضيفها أنت فقط. ابدأ بإضافة أول ذكرى.</p>
+        <button class="btn go" data-a="add" style="font-size:1.1rem;padding:14px 34px">${ic('plus')} أضف أول ذكرى</button>
+        <div style="margin-top:20px"><button class="chip" data-a="reset" data-v="demo">أو استكشف المدينة التجريبية (Demo)</button></div>
+    </section>`;
+ }
+ return `<section class="top"><button class="card act" data-a="add"><span class="b">${ic('plus')}</span><span><b>أضف ذكرى جديدة</b><small>${n} ذكرى حالياً</small></span></button><button class="card act" data-a="ai"><span class="b o">${ic('spark')}</span><span><b>المساعد الذكي</b><small>اسألني عن ذكرياتك</small></span></button></section>
+ <div class="lvl"><span>${L.name} · ${n} ذكرى</span></div>
+ <div class="wrap" id="w">${world()}</div><div class="zm"><button data-a="z" data-v="-.25" aria-label="تصغير">−</button><button data-a="z" data-v=".25" aria-label="تكبير">+</button></div>
+ <div class="strip">${C.map((c,i)=>`<button class="chip" data-a="d" data-k="${c[0]}">${i+1} ${c[2]} ${c[1]}</button>`).join('')}</div>
+ <section class="card tt"><h3>${ic('journey')} السفر عبر الزمن</h3><div class="yrs"><button class="yc" data-a="y" data-y="">الكل</button>${years().map(y=>`<button class="yc" data-a="y" data-y="${y}">${y}</button>`).join('')}</div><small id="ys" style="color:var(--text-secondary)"></small></section>
+ <div class="qs"><div class="card sc"><b>${n}</b><small>ذكرى</small></div><div class="card sc"><b>${new Set(S.mem.map(m=>m.cat)).size}</b><small>حي نشط</small></div><div class="card sc"><b>${S.mem.filter(m=>m.fav).length}</b><small>مفضلة</small></div></div>
+ <div class="cta"><button class="btn go" data-a="journey">${ic('journey')} ابدأ رحلة الذكريات</button></div>`},
+city(){const n=S.mem.length,L=lvl(n),T=[['عالم صغير','0–5'],['مدينة نامية','6–15'],['مدينة كبيرة','16–30'],['مدينة الذكريات الكبرى','+30']];
+ return hd('المدينة',L.next?`${L.name} — بقي ${L.next-n} ذكرى للمستوى التالي`:`${L.name} — وصلت إلى أعلى مستوى`)+`<div class="tiers">${T.map((t,i)=>`<div class="tier${i==L.i?' on':''}"><b>${t[0]}</b><small>${t[1]} ذكرى</small></div>`).join('')}</div><div class="grid">${C.map(dcard).join('')}</div><p style="margin-top:16px;color:var(--text-secondary)">الروابط بين الذكريات: ${conns()}</p>`},
+memories(){return hd('الذكريات','ابحث بالعنوان أو الشخص أو المكان أو السنة أو التصنيف أو الوسم')+`<div class="sb">${ic('search')}<input id="q" type="search" aria-label="بحث" placeholder="ابحث في ذكرياتك" value="${esc(S.q)}"></div><div class="chips"><button class="chip${S.fav?' on':''}" data-a="ff">★ المفضلة</button>${C.map(c=>`<button class="chip${S.cat==c[0]?' on':''}" data-a="fc" data-k="${c[0]}">${c[2]} ${c[1]}</button>`).join('')}</div><div id="res" class="grid">${res()}</div>`},
+stats(){const M=S.mem,n=M.length,ps=new Set(M.flatMap(m=>m.people)),ls=new Set(M.map(m=>m.loc)),ya=mode(M.map(yr)),mo=mode(M.map(m=>m.mood)),mx=ya[0]?ya[0][1]:1,
+ cd=[[n,'إجمالي الذكريات'],[new Set(M.map(m=>m.cat)).size+' / 10','الأحياء النشطة'],[M.filter(m=>m.fav).length,'الذكريات المفضلة'],[ps.size,'الأشخاص'],[ls.size,'الأماكن'],[ya[0]?ya[0][0]:'—','السنة الأنشط'],[mo[0]?mo[0][0]:'—','الشعور الأكثر'],[conns(),'الروابط']];
+ if(n===0) return hd('الإحصائيات','لا توجد بيانات كافية')+emptyBox();
+ return hd('الإحصائيات','نظرة على مدينتك')+`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">${cd.map(c=>`<div class="card sc"><b>${c[0]}</b><small>${c[1]}</small></div>`).join('')}</div><section class="card tt" style="margin-top:16px"><h3>الذكريات حسب السنة</h3><div class="ys">${ya.sort().map(y=>`<div><i style="height:${y[1]/mx*80}%"></i>${y[0]}</div>`).join('')}</div></section>`},
+journey(){const st=C.filter(c=>S.mem.some(m=>m.cat==c[0]));
+ return hd('رحلة الذكريات','تنقّل بين محطات حياتك واحدة تلو الأخرى')+(st.length?`<div class="chips">${st.map((c,i)=>`<span class="chip">${i?'← ':''}${c[2]} ${c[1]}</span>`).join('')}</div><div class="cta"><button class="btn go" data-a="journey">${ic('journey')} ابدأ رحلة الذكريات</button></div>`:emptyBox())},
+settings(){return hd('الإعدادات','البيانات محفوظة في هذا المتصفح فقط')+`<div class="row"><button class="btn" data-a="reset" data-v="demo">استعادة الذكريات التجريبية</button><button class="btn ghost" data-a="reset" data-v="clear">حذف كل الذكريات</button></div>`}
+};
+function dist(k){const c=cat(k),l=S.mem.filter(m=>m.cat==k).sort(byDate);
+ return `<a class="chip" href="#city">رجوع إلى المدينة</a>`+hd(c[2]+' حي '+c[1],c[3]+' — '+l.length+' ذكرى')+`<div class="row" style="margin:0 0 16px"><button class="btn" data-a="add" data-k="${k}">${ic('plus')} أضف ذكرى لهذا الحي</button></div>`+(l.length?`<div class="grid">${l.map(mcard).join('')}</div>`:emptyBox(k))}
+function res(){const t=S.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+ const l=S.mem.filter(m=>(!S.cat||m.cat==S.cat)&&(!S.fav||m.fav)&&t.every(w=>[m.title,m.loc,m.desc,cat(m.cat)[1],yr(m),m.mood,...m.people,...m.tags].join(' ').toLowerCase().includes(w))).sort(byDate);
+ return l.length?l.map(mcard).join(''):(S.mem.length?'<p style="color:var(--text-secondary)">لا توجد نتائج مطابقة.</p>':emptyBox())}
+
+/* ---------- Router ---------- */
+const NAV=[['home','الرئيسية','home'],['city','المدينة','city'],['memories','الذكريات','mem'],['stats','الإحصائيات','stats'],['journey','الرحلة','journey']];
+const links=NAV.map(n=>`<a class="nl" href="#${n[0]}" data-h="${n[0]}">${ic(n[2])}<span>${n[1]}</span></a>`).join('');
+$('nav').innerHTML=`<div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 4a12 12 0 1 0 8 20 10 10 0 0 1-8-20z" fill="#5eead4"/><path d="M11 25v-6h4v6M15 25v-9h4v9" stroke="#fff" fill="none"/></svg>مدينة الذكريات</div>${links}<div class="pf"><a href="#settings" aria-label="الملف الشخصي والإعدادات">${ic('user')}</a></div>`;
+$('bn').innerHTML=links;
+function route(keep){const h=location.hash.slice(1)||'landing',a=h.startsWith('d-')?'city':h;
+ $('nav').hidden=$('bn').hidden=h=='landing';
+ document.querySelectorAll('.nl').forEach(e=>{e.classList.toggle('on',e.dataset.h==a);e.setAttribute('aria-current',e.dataset.h==a?'page':'false')});
+ const y=scrollY,v=V[h]||(h.startsWith('d-')&&cat(h.slice(2))?()=>dist(h.slice(2)):V.home);
+ $('app').innerHTML=v();scrollTo(0,keep?y:0);if(h=='home')sync()}
+addEventListener('hashchange',()=>route());
+
+/* ---------- Overlays ---------- */
+const close=()=>{$('ov').innerHTML=''; window.currentImages=[]; window.isEdit=false;};
+const modal=h=>{$('ov').innerHTML=`<div class="back"><div class="card modal" role="dialog" aria-modal="true" tabindex="-1"><button class="x" data-a="close" aria-label="إغلاق">${ic('x')}</button>${h}</div></div>`;$('ov').querySelector('.modal').focus()};
+const toast=t=>{const e=$('toast');e.textContent=t;e.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>e.hidden=true,2600)};
+const chips=(a,p)=>a.length?`<div class="row" style="margin-top:6px">${a.map(x=>`<span class="chip">${p}${esc(x)}</span>`).join('')}</div>`:'';
+
+async function openMem(id){
+    const m=S.mem.find(x=>x.id==id);if(!m)return;
+    const c=cat(m.cat);
+    const rel=S.mem.filter(x=>x.id!=id&&(x.cat==m.cat||x.people.some(p=>m.people.includes(p))||x.tags.some(t=>m.tags.includes(t)))).slice(0,5);
+    
+    let imgHtml = '';
+    if(m.images && m.images.length > 0) {
+        imgHtml = `<div class="thumbs" id="modal-thumbs" style="margin-bottom:16px"></div>`;
+    } else {
+        imgHtml = `<div class="art big" style="--h:${hu(m.cat)};margin-bottom:16px">${c[2]}</div>`;
+    }
+
+    modal(`${imgHtml}<h2>${m.fav?'★ ':''}${esc(m.title)}</h2><div class="meta">📅 ${m.date} · 📍 ${esc(m.loc)} · 🙂 ${esc(m.mood)} · ${c[1]}</div><p>${esc(m.desc)}</p>${chips(m.people,'👤 ')}${chips(m.tags,'#')}<div class="row"><button class="btn" data-a="fav" data-id="${m.id}">${m.fav?'★ في المفضلة':'☆ أضف للمفضلة'}</button><button class="btn ghost" data-a="del" data-id="${m.id}">حذف</button></div>${rel.length?`<h4>ذكريات مرتبطة</h4><div class="row" style="margin-top:0">${rel.map(r=>`<button class="chip" data-a="open" data-id="${r.id}">${esc(r.title)}</button>`).join('')}</div>`:''}`);
+    
+    if(m.images && m.images.length > 0) {
+        const container = $('modal-thumbs');
+        for(const imgId of m.images) {
+            const rec = await imgStore.get(imgId);
+            if(rec) {
+                const url = URL.createObjectURL(rec.blob);
+                const imgEl = document.createElement('img');
+                imgEl.src = url;
+                imgEl.className = 'thumb';
+                if(imgId === m.coverImage) {
+                    imgEl.classList.add('cover');
+                    imgEl.style.width = '120px';
+                    imgEl.style.height = '120px';
+                }
+                // Full preview on click
+                imgEl.onclick = () => {
+                    const pv = document.createElement('div');
+                    pv.className = 'back';
+                    pv.innerHTML = `<img src="${url}" style="max-width:90vw;max-height:90vh;border-radius:10px;border:2px solid var(--primary)">`;
+                    pv.onclick = () => pv.remove();
+                    document.body.appendChild(pv);
+                };
+                container.appendChild(imgEl);
+            }
+        }
+    }
+}
+
+/* ---------- Image Processing ---------- */
+async function processImage(file, memoryId) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            let w = img.width, h = img.height;
+            const max = 1600;
+            if (w > max || h > max) {
+                const ratio = Math.min(max / w, max / h);
+                w = Math.round(w * ratio); h = Math.round(h * ratio);
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            
+            const tCanvas = document.createElement('canvas');
+            const tSize = 200;
+            const tRatio = Math.min(tSize / w, tSize / h);
+            tCanvas.width = w * tRatio; tCanvas.height = h * tRatio;
+            const tCtx = tCanvas.getContext('2d');
+            tCtx.drawImage(canvas, 0, 0, tCanvas.width, tCanvas.height);
+
+            canvas.toBlob(async blob => {
+                tCanvas.toBlob(async thumbBlob => {
+                    const id = 'img_' + Date.now() + Math.random().toString(36).substr(2, 5);
+                    const record = {
+                        id, memoryId,
+                        blob, thumbnail: thumbBlob,
+                        name: file.name, type: 'image/webp',
+                        size: blob.size, width: w, height: h,
+                        createdAt: Date.now()
+                    };
+                    await imgStore.save(record);
+                    resolve({ id, thumbUrl: URL.createObjectURL(thumbBlob) });
+                }, 'image/webp', 0.8);
+            }, 'image/webp', 0.85);
+        };
+        img.onerror = reject;
+        img.src = URL.createObjectURL(file);
+    });
+}
+
+function addForm(k){
+    window.currentImages = [];
+    
+    modal(`
+        <h2>أضف ذكرى جديدة</h2>
+        <form id="af">
+            <label>العنوان<input name="t" required maxlength="80"></label>
+            <div class="g2">
+                <label>التاريخ<input type="date" name="d" required value="${new Date().toISOString().slice(0,10)}"></label>
+                <label>المكان<input name="l" required></label>
+            </div>
+            <label>الوصف<textarea name="x" rows="3" required></textarea></label>
+            
+            <div class="g2">
+                <label>التصنيف / الحي<select name="c">${C.map(c=>`<option value="${c[0]}"${c[0]==k?' selected':''}>${c[2]} ${c[1]}</option>`).join('')}</select></label>
+                <label>المنطقة (District)<input name="district" placeholder="مثال: حي الجامعة"></label>
+            </div>
+            <div class="g2">
+                <label>المزاج<select name="m">${MOODS.map(x=>`<option>${x}</option>`).join('')}</select></label>
+                <label>الأشخاص (فاصلة)<input name="p"></label>
+            </div>
+            <label>الوسوم (فاصلة)<input name="g"></label>
+            
+            <div style="margin-top:16px">
+                <label>صور الذكرى</label>
+                <div class="upload-area" id="drop-zone">
+                    <p>📷 <b>أضف صوراً لهذه الذكرى</b></p>
+                    <p>اسحب الصور هنا أو اخترها من جهازك</p>
+                    <input type="file" id="file-input" accept="image/*" capture="environment" multiple hidden>
+                </div>
+                <div class="thumbs" id="thumb-container"></div>
+            </div>
+
+            <button type="button" class="btn ghost" id="ai-analyze-btn" style="margin-top:10px; width:100%">✨ تحليل الذكرى بالذكاء الاصطناعي</button>
+            <div id="ai-suggestions" hidden></div>
+            
+            <label class="ck"><input type="checkbox" name="f"> ذكرى مفضلة (معلم في المدينة)</label>
+            <button class="btn go" type="submit">حفظ الذكرى</button>
+        </form>
+    `);
+
+    // Image Upload Logic
+    const dropZone = $('drop-zone');
+    const fileInput = $('file-input');
+    const thumbContainer = $('thumb-container');
+
+    dropZone.onclick = () => fileInput.click();
+    dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('dragover'); };
+    dropZone.ondragleave = () => dropZone.classList.remove('dragover');
+    dropZone.ondrop = (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); };
+    fileInput.onchange = (e) => handleFiles(e.target.files);
+
+    async function handleFiles(files) {
+        for (const file of files) {
+            if(!file.type.startsWith('image/')) continue;
+            const ph = document.createElement('div');
+            ph.className = 'thumb-wrap';
+            ph.innerHTML = `<div class="thumb" style="display:grid;place-items:center"><div class="spinner"></div></div>`;
+            thumbContainer.appendChild(ph);
+
+            try {
+                const processed = await processImage(file, 'temp');
+                ph.remove();
+
+                const wrap = document.createElement('div');
+                wrap.className = 'thumb-wrap';
+                wrap.innerHTML = `
+                    <img src="${processed.thumbUrl}" class="thumb ${window.currentImages.length===0?'cover':''}" data-id="${processed.id}">
+                    <button type="button" class="del" data-del="${processed.id}">×</button>
+                    ${window.currentImages.length===0?'<span class="cover-badge">غلاف</span>':''}
+                `;
+                thumbContainer.appendChild(wrap);
+                window.currentImages.push({ id: processed.id, isCover: window.currentImages.length===0 });
+            } catch (err) {
+                ph.remove(); toast('فشل رفع الصورة');
+            }
+        }
+    }
+
+    thumbContainer.onclick = (e) => {
+        const delBtn = e.target.closest('.del');
+        if(delBtn) {
+            const id = delBtn.dataset.del;
+            window.currentImages = window.currentImages.filter(x => x.id !== id);
+            delBtn.parentElement.remove();
+            // If deleted was cover, assign new cover
+            if(!window.currentImages.find(x=>x.isCover) && window.currentImages.length > 0) {
+                window.currentImages[0].isCover = true;
+                const firstThumb = thumbContainer.querySelector('.thumb');
+                if(firstThumb) { firstThumb.classList.add('cover'); firstThumb.parentElement.innerHTML += '<span class="cover-badge">غلاف</span>'; }
+            }
+            return;
+        }
+        const img = e.target.closest('.thumb');
+        if(img) {
+            const id = img.dataset.id;
+            thumbContainer.querySelectorAll('.thumb').forEach(t => t.classList.remove('cover'));
+            thumbContainer.querySelectorAll('.cover-badge').forEach(b => b.remove());
+            img.classList.add('cover');
+            img.parentElement.innerHTML += '<span class="cover-badge">غلاف</span>';
+            window.currentImages.forEach(x => x.isCover = x.id === id);
+        }
+    };
+
+    // AI Suggestion Logic
+    $('ai-analyze-btn').onclick = () => {
+        const title = document.querySelector('input[name="t"]').value;
+        const desc = document.querySelector('textarea[name="x"]').value;
+        if(!title && !desc) { toast('اكتب عنواناً أو وصفاً أولاً'); return; }
+        
+        // Simulated AI Organization
+        let catSug = 'special', moodSug = 'سعادة', tagSug = ['ذكرى'];
+        if(title.includes('جامعة') || desc.includes('جامعة')) { catSug = 'uni'; tagSug = ['جامعة','دراسة']; }
+        else if(title.includes('سفر') || desc.includes('سفر')) { catSug = 'travel'; moodSug = 'حماس'; tagSug = ['سفر','رحلة']; }
+        else if(title.includes('صديق') || desc.includes('صديق')) { catSug = 'friends'; tagSug = ['أصدقاء']; }
+        
+        const box = $('ai-suggestions');
+        box.hidden = false;
+        box.innerHTML = `
+            <div class="ai-box">
+                <h4>✨ اقتراحات الذكاء الاصطناعي (بناءً على نصك)</h4>
+                <div class="ai-suggestion"><span>التصنيف:</span><b>${cat(catSug)[1]}</b></div>
+                <div class="ai-suggestion"><span>المزاج:</span><b>${moodSug}</b></div>
+                <div class="ai-suggestion"><span>الوسوم:</span><b>${tagSug.join(', ')}</b></div>
+                <div class="row" style="margin-top:8px">
+                    <button type="button" class="btn" id="ai-accept" style="padding:6px 12px;font-size:.8rem">موافقة</button>
+                    <button type="button" class="btn ghost" id="ai-ignore" style="padding:6px 12px;font-size:.8rem">تجاهل</button>
+                </div>
+            </div>
+        `;
+        box.querySelector('#ai-accept').onclick = () => {
+            document.querySelector('select[name="c"]').value = catSug;
+            document.querySelector('select[name="m"]').value = moodSug;
+            document.querySelector('input[name="g"]').value = tagSug.join(', ');
+            box.hidden = true;
+            toast('تم تطبيق الاقتراحات');
+        };
+        box.querySelector('#ai-ignore').onclick = () => { box.hidden = true; };
+    };
+}
+
+function jr(i){const st=C.filter(c=>S.mem.some(m=>m.cat==c[0]));if(!st.length){close();location.hash='home';return}
+ const c=st[i],l=S.mem.filter(m=>m.cat==c[0]).sort((a,b)=>a.date>b.date?1:-1);
+ $('ov').innerHTML=`<div class="jv" role="dialog" aria-modal="true"><button class="x" data-a="close" aria-label="إغلاق">${ic('x')}</button><div class="jp">${st.map((_,j)=>`<i class="${j<=i?'on':''}"></i>`).join('')}</div><div class="js"><div class="big">${c[2]}</div><small>المحطة ${i+1} من ${st.length}</small><h2>${c[1]}</h2><p>${c[3]}</p><div class="jl">${l.map(mcard).join('')}</div></div><div class="row">${i?`<button class="btn ghost" data-a="j" data-i="${i-1}">السابق</button>`:''}${i<st.length-1?`<button class="btn go" data-a="j" data-i="${i+1}">المحطة التالية</button>`:`<button class="btn go" data-a="close">العودة إلى المدينة</button>`}</div></div>`;
+ $('ov').querySelector('.jv').scrollTo(0,0)}
+
+function ai(){modal(`<h2>${ic('spark')} المساعد الذكي</h2><p class="meta">أبحث داخل ذكرياتك المحفوظة فقط. لا أخترع أحداثاً.</p><form id="qf"><label>اسألني<input name="q" placeholder="مثال: ماذا حدث في إسطنبول؟" autocomplete="off" required></label><button class="btn go" type="submit">اسأل</button></form><div id="ans" style="margin-top:14px" aria-live="polite"></div>`)}
+
+function ask(q){
+    const n=S.mem.length;
+    if(n === 0) {
+        $('ans').innerHTML='<p style="color:var(--warning)">لا توجد معلومات كافية في ذكرياتك الحالية. أضف بعض الذكريات أولاً.</p>';
+        return;
+    }
+    const stop=['ماذا','أين','متى','عن','ذكريات','ذكرياتي','ذكرى','كانت','أخبرني','اعرض','هل','لدي','حدث'];
+    const t=q.split(/\s+/).filter(w=>w.length>2&&!stop.includes(w));
+    let a='',r=[];
+    
+    if(/كم/.test(q)&&/ذكر/.test(q)) a=`لديك ${n} ذكرى في ${new Set(S.mem.map(m=>m.cat)).size} أحياء.`;
+    else if(/مفضل/.test(q)){r=S.mem.filter(m=>m.fav);a=r.length?'ذكرياتك المفضلة:':'لا توجد ذكريات مفضلة بعد.'}
+    else{
+        r=S.mem.filter(m=>t.some(w=>[m.title,m.loc,m.desc,cat(m.cat)[1],yr(m),...m.people,...m.tags].join(' ').includes(w)));
+        a=r.length?`وجدت ${r.length} ذكرى مطابقة:`:'لا توجد معلومات كافية في ذكرياتك الحالية تطابق سؤالك.';
+    }
+    $('ans').innerHTML=`<p>${a}</p><div class="row" style="margin-top:8px">${r.slice(0,6).map(m=>`<button class="chip" data-a="open" data-id="${m.id}">${esc(m.title)}</button>`).join('')}</div>`;
+}
+
+/* ---------- Events ---------- */
+document.addEventListener('click',e=>{
+ if(e.target.classList.contains('back')){close();return}
+ const nd=e.target.closest('.node'),bl=e.target.closest('.bld.m');
+ if(nd){location.hash='d-'+nd.dataset.k;return}if(bl){openMem(bl.dataset.id);return}
+ const t=e.target.closest('[data-a]');if(!t)return;const a=t.dataset.a,id=t.dataset.id;
+ const m=S.mem.find(x=>x.id==id),sure=()=>{if(t.dataset.s)return true;t.dataset.s=1;t.textContent='اضغط مرة أخرى للتأكيد';return false};
+ const A={
+     open:()=>openMem(id), add:()=>addForm(t.dataset.k), ai, journey:()=>jr(0), j:()=>jr(+t.dataset.i), close,
+     d:()=>{close();location.hash='d-'+t.dataset.k}, y:()=>{S.year=t.dataset.y||null;sync()},
+     z:()=>{S.zoom=Math.min(2,Math.max(1,S.zoom+ +t.dataset.v));document.querySelector('#w svg').style.width=S.zoom*100+'%'},
+     fc:()=>{S.cat=S.cat==t.dataset.k?'':t.dataset.k;route(1)}, ff:()=>{S.fav=!S.fav;route(1)},
+     fav:()=>{m.fav=!m.fav;save();openMem(id);route(1)},
+     del:()=>{if(sure()){S.mem=S.mem.filter(x=>x.id!=id);save();close();route(1);toast('تم حذف الذكرى')}},
+     reset:async ()=>{
+         if(sure()){
+             if(t.dataset.v=='clear') { S.mem=[]; await imgStore.clear(); }
+             else { S.mem=seed(); }
+             save(); toast('تم تحديث المدينة');
+             location.hash='#home'; route(1);
+         }
+     }
+ };
+ A[a]&&A[a]()
+});
+
+document.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const f=e.target;
+    if(f.id=='qf'){ask(f.q.value.trim());return}
+    
+    if(f.id=='af'){
+        const L0=lvl(S.mem.length).i;
+        const sp=v=>v.split(/[,،]/).map(s=>s.trim()).filter(Boolean);
+        const memoryId = 'u' + Date.now();
+        
+        // Update image records with real memory ID
+        for(const img of window.currentImages) {
+            const rec = await imgStore.get(img.id);
+            if(rec) { rec.memoryId = memoryId; await imgStore.save(rec); }
+        }
+        
+        const coverId = window.currentImages.find(x=>x.isCover)?.id || window.currentImages[0]?.id || null;
+        
+        S.mem.push(mk(
+            memoryId, f.t.value.trim(), f.d.value, f.l.value.trim(), 
+            f.c.value, f.m.value, sp(f.p.value), sp(f.g.value), f.f.checked, f.x.value.trim(),
+            window.currentImages.map(x=>x.id), coverId, f.district.value.trim()
+        ));
+        
+        save(); close();
+        const L1=lvl(S.mem.length);
+        toast(L1.i>L0 ? `كبرت مدينتك! أصبحت: ${L1.name}` : 'تمت إضافة الذكرى إلى مدينتك');
+        
+        if(location.hash.startsWith('#d-')||location.hash=='#home'||location.hash=='') {
+            location.hash = location.hash || '#home';
+            route(1);
+        }
+    }
+});
+
+document.addEventListener('input',e=>{if(e.target.id=='q'){S.q=e.target.value;$('res').innerHTML=res()}});
+document.addEventListener('keydown',e=>{if(e.key=='Escape')close();
+ if((e.key=='Enter'||e.key==' ')&&e.target.matches('[role=button],[role=link]')){e.preventDefault();e.target.click()}});
+document.addEventListener('mousemove',e=>{const t=e.target.closest&&e.target.closest('[data-tip]'),tp=$('tip');if(!t){tp.hidden=true;return}
+ let h;if(t.dataset.tip=='n'){const k=t.dataset.k,l=list(k).sort(byDate);h=`<b>حي ${cat(k)[1]}</b><br>${l.length} ذكرى<br><small>آخر ذكرى: ${l[0]?esc(l[0].title):'—'}</small>`}
+ else{const m=S.mem.find(x=>x.id==t.dataset.id);if(!m){tp.hidden=true;return}h=`<b>${esc(m.title)}</b><br><small>${m.date} · ${esc(m.loc)}</small>`}
+ tp.innerHTML=h;tp.hidden=false;tp.style.left=Math.max(8,Math.min(e.clientX-110,innerWidth-240))+'px';tp.style.top=(e.clientY+16)+'px'});
+
+route();
+setTimeout(()=>{const l=$('load');l.style.opacity=0;setTimeout(()=>l.remove(),600)},1300);
+</script>
+</body>
+</html>
